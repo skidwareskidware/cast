@@ -20,8 +20,8 @@ local Container = ScreenGui:FindFirstChild("Container")
 if not Container then
     Container = Instance.new("Frame")
     Container.Name = "Container"
-    Container.Size = UDim2.new(0, 320, 0.9, 0)
-    Container.Position = UDim2.new(1, -340, 0.02, 0)
+    Container.Size = UDim2.new(0, 300, 0.9, 0)
+    Container.Position = UDim2.new(1, -320, 0.02, 0)
     Container.BackgroundTransparency = 1
     Container.Parent = ScreenGui
 
@@ -71,7 +71,7 @@ function NotifSystem.basic(title: string, duration: number)
     TextLabel.TextScaled = true
     TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     TextLabel.Font = Enum.Font.SourceSans
-    TextLabel.TextColor3 = Color3.fromRGB(219, 219, 219)
+    TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     TextLabel.BackgroundTransparency = 1
     TextLabel.Text = title
     TextLabel.Size = UDim2.new(1, -30, 1, 0)
@@ -81,7 +81,7 @@ function NotifSystem.basic(title: string, duration: number)
     local UITextSizeConstraint = Instance.new("UITextSizeConstraint", TextLabel)
     UITextSizeConstraint.MaxTextSize = 18
 
-    local calculatedSize = TextService:GetTextSize(title, 18, Enum.Font.SourceSans, Vector2.new(280, 50))
+    local calculatedSize = TextService:GetTextSize(title, 18, Enum.Font.SourceSans, Vector2.new(260, 50))
     local dynamicWidth = math.max(130, calculatedSize.X + 45)
 
     NotifFrame.Size = UDim2.new(0, dynamicWidth, 0, 49)
@@ -97,6 +97,7 @@ function NotifSystem.desc(title: string, description: string, duration: number)
     NotifFrame.BorderSizePixel = 0
     NotifFrame.BackgroundColor3 = Color3.fromRGB(0, 13, 27)
     NotifFrame.GroupTransparency = 1
+    NotifFrame.Size = UDim2.new(0, 300, 0, 100)
     
     local UICorner = Instance.new("UICorner")
     UICorner.CornerRadius = UDim.new(0, 24)
@@ -106,7 +107,7 @@ function NotifSystem.desc(title: string, description: string, duration: number)
     TitleLabel.Name = "Title"
     TitleLabel.Text = title
     TitleLabel.TextSize = 20
-    TitleLabel.Font = Enum.Font.SourceSansBold
+    TitleLabel.Font = Enum.Font.SourceSans
     TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     TitleLabel.BackgroundTransparency = 1
     TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -119,7 +120,7 @@ function NotifSystem.desc(title: string, description: string, duration: number)
     DescLabel.Text = description
     DescLabel.TextSize = 15
     DescLabel.Font = Enum.Font.SourceSans
-    DescLabel.TextColor3 = Color3.fromRGB(150, 165, 180)
+    DescLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     DescLabel.BackgroundTransparency = 1
     DescLabel.TextWrapped = true
     DescLabel.TextXAlignment = Enum.TextXAlignment.Left
