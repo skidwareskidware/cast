@@ -70,7 +70,7 @@ function NotifSystem.basic(title: string, duration: number)
     TextLabel.TextSize = 18
     TextLabel.TextScaled = true
     TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    TextLabel.FontFace = Font.fromName("Inter")
+    TextLabel.FontFace = Font.fromId(12187365364)
     TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     TextLabel.BackgroundTransparency = 1
     TextLabel.Text = title
@@ -107,7 +107,7 @@ function NotifSystem.desc(title: string, description: string, duration: number)
     TitleLabel.Name = "Title"
     TitleLabel.Text = title
     TitleLabel.TextSize = 18
-    TitleLabel.FontFace = Font.fromName("Inter")
+    TitleLabel.FontFace = Font.fromId(12187365364)
     TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     TitleLabel.BackgroundTransparency = 1
     TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -119,7 +119,7 @@ function NotifSystem.desc(title: string, description: string, duration: number)
     DescLabel.Name = "Description"
     DescLabel.Text = description
     DescLabel.TextSize = 15
-    DescLabel.FontFace = Font.fromName("Inter")
+    DescLabel.FontFace = Font.fromId(12187365364)
     DescLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     DescLabel.BackgroundTransparency = 1
     DescLabel.TextWrapped = true
