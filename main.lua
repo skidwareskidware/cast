@@ -10,7 +10,7 @@ local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 local ScreenGui = PlayerGui:FindFirstChild("FrvgmxtNotifSystem")
 if not ScreenGui then
     ScreenGui = Instance.new("ScreenGui")
-    ScreenGui.Name = "FrvgmxtNotifSystem"
+    ScreenGui.Name = "CastNotifSystem"
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     ScreenGui.ResetOnSpawn = false
     ScreenGui.Parent = PlayerGui
@@ -70,7 +70,7 @@ function NotifSystem.basic(title: string, duration: number)
     TextLabel.TextSize = 18
     TextLabel.TextScaled = true
     TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    TextLabel.Font = Enum.Font.SourceSans
+    TextLabel.FontFace = Font.fromName("Inter")
     TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     TextLabel.BackgroundTransparency = 1
     TextLabel.Text = title
@@ -81,7 +81,7 @@ function NotifSystem.basic(title: string, duration: number)
     local UITextSizeConstraint = Instance.new("UITextSizeConstraint", TextLabel)
     UITextSizeConstraint.MaxTextSize = 18
 
-    local calculatedSize = TextService:GetTextSize(title, 18, Enum.Font.SourceSans, Vector2.new(260, 50))
+    local calculatedSize = TextService:GetTextSize(title, 18, Enum.Font.Inter, Vector2.new(260, 50))
     local dynamicWidth = math.max(130, calculatedSize.X + 45)
 
     NotifFrame.Size = UDim2.new(0, dynamicWidth, 0, 49)
@@ -106,8 +106,8 @@ function NotifSystem.desc(title: string, description: string, duration: number)
     local TitleLabel = Instance.new("TextLabel")
     TitleLabel.Name = "Title"
     TitleLabel.Text = title
-    TitleLabel.TextSize = 20
-    TitleLabel.Font = Enum.Font.SourceSans
+    TitleLabel.TextSize = 18
+    TitleLabel.FontFace = Font.fromName("Inter")
     TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     TitleLabel.BackgroundTransparency = 1
     TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -119,7 +119,7 @@ function NotifSystem.desc(title: string, description: string, duration: number)
     DescLabel.Name = "Description"
     DescLabel.Text = description
     DescLabel.TextSize = 15
-    DescLabel.Font = Enum.Font.SourceSans
+    DescLabel.FontFace = Font.fromName("Inter")
     DescLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     DescLabel.BackgroundTransparency = 1
     DescLabel.TextWrapped = true
@@ -127,7 +127,7 @@ function NotifSystem.desc(title: string, description: string, duration: number)
     DescLabel.TextYAlignment = Enum.TextYAlignment.Top
     DescLabel.Parent = NotifFrame
 
-    local estimatedDescSize = TextService:GetTextSize(description, 15, Enum.Font.SourceSans, Vector2.new(260, 800))
+    local estimatedDescSize = TextService:GetTextSize(description, 15, Enum.Font.Inter, Vector2.new(260, 800))
     
     local finalContainerHeight = 16 + 24 + 8 + estimatedDescSize.Y + 20
     NotifFrame.Size = UDim2.new(0, 300, 0, finalContainerHeight)
