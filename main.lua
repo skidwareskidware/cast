@@ -7,6 +7,8 @@ local TextService = game:GetService("TextService")
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
+local InterFont = Font.new("rbxasset://fonts/families/Inter.json", Enum.FontWeight.Regular)
+
 local ScreenGui = PlayerGui:FindFirstChild("cast")
 if not ScreenGui then
     ScreenGui = Instance.new("ScreenGui")
@@ -36,7 +38,7 @@ end
 local function animateNotif(frame, duration)
     frame.Parent = Container
     local tweenInfo = TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out)
-    
+
     local fadeIn = TweenService:Create(frame, tweenInfo, {GroupTransparency = 0})
     local fadeOut = TweenService:Create(frame, tweenInfo, {GroupTransparency = 1})
 
@@ -52,13 +54,13 @@ end
 
 function NotifSystem.basic(title: string, duration: number)
     duration = duration or 3
-    
+
     local NotifFrame = Instance.new("CanvasGroup")
     NotifFrame.Name = "BasicNotif"
     NotifFrame.BorderSizePixel = 0
     NotifFrame.BackgroundColor3 = Color3.fromRGB(0, 13, 27)
     NotifFrame.GroupTransparency = 1
-    
+
     local UICorner = Instance.new("UICorner")
     UICorner.CornerRadius = UDim.new(0, 21313)
     UICorner.Parent = NotifFrame
@@ -70,7 +72,7 @@ function NotifSystem.basic(title: string, duration: number)
     TextLabel.TextSize = 18
     TextLabel.TextScaled = true
     TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    TextLabel.FontFace = Font.fromId(12187365364)
+    TextLabel.FontFace = InterFont
     TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     TextLabel.BackgroundTransparency = 1
     TextLabel.Text = title
@@ -81,24 +83,24 @@ function NotifSystem.basic(title: string, duration: number)
     local UITextSizeConstraint = Instance.new("UITextSizeConstraint", TextLabel)
     UITextSizeConstraint.MaxTextSize = 18
 
-    local calculatedSize = TextService:GetTextSize(title, 18, Enum.Font.SourceSans, Vector2.new(260, 50))
+    local calculatedSize = TextService:GetTextSize(title, 18, InterFont, Vector2.new(260, 50))
     local dynamicWidth = math.max(130, calculatedSize.X + 45)
 
     NotifFrame.Size = UDim2.new(0, dynamicWidth, 0, 49)
-    
+
     animateNotif(NotifFrame, duration)
 end
 
 function NotifSystem.desc(title: string, description: string, duration: number)
     duration = duration or 4
-    
+
     local NotifFrame = Instance.new("CanvasGroup")
     NotifFrame.Name = "DescNotif"
     NotifFrame.BorderSizePixel = 0
     NotifFrame.BackgroundColor3 = Color3.fromRGB(0, 13, 27)
     NotifFrame.GroupTransparency = 1
     NotifFrame.Size = UDim2.new(0, 300, 0, 100)
-    
+
     local UICorner = Instance.new("UICorner")
     UICorner.CornerRadius = UDim.new(0, 24)
     UICorner.Parent = NotifFrame
@@ -107,7 +109,7 @@ function NotifSystem.desc(title: string, description: string, duration: number)
     TitleLabel.Name = "Title"
     TitleLabel.Text = title
     TitleLabel.TextSize = 18
-    TitleLabel.FontFace = Font.fromId(12187365364)
+    TitleLabel.FontFace = InterFont
     TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     TitleLabel.BackgroundTransparency = 1
     TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -119,7 +121,7 @@ function NotifSystem.desc(title: string, description: string, duration: number)
     DescLabel.Name = "Description"
     DescLabel.Text = description
     DescLabel.TextSize = 15
-    DescLabel.FontFace = Font.fromId(12187365364)
+    DescLabel.FontFace = InterFont
     DescLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
     DescLabel.BackgroundTransparency = 1
     DescLabel.TextWrapped = true
@@ -127,11 +129,11 @@ function NotifSystem.desc(title: string, description: string, duration: number)
     DescLabel.TextYAlignment = Enum.TextYAlignment.Top
     DescLabel.Parent = NotifFrame
 
-    local estimatedDescSize = TextService:GetTextSize(description, 15, Enum.Font.SourceSans, Vector2.new(260, 800))
-    
+    local estimatedDescSize = TextService:GetTextSize(description, 15, InterFont, Vector2.new(260, 800))
+
     local finalContainerHeight = 16 + 24 + 8 + estimatedDescSize.Y + 20
     NotifFrame.Size = UDim2.new(0, 300, 0, finalContainerHeight)
-    
+
     DescLabel.Size = UDim2.new(1, -40, 0, estimatedDescSize.Y)
     DescLabel.Position = UDim2.new(0, 20, 0, 48)
 
